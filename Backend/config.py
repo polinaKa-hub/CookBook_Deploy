@@ -7,8 +7,8 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key')
     # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///cookbook.db')  
     SQLALCHEMY_DATABASE_URI = os.getenv(
-    'DATABASE_URL',
-    'sqlite:///instance/cookbook.db'
+        'DATABASE_URL',
+        'sqlite:////tmp/cookbook.db'  # 4 слэша! абсолютный путь
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')

@@ -1,0 +1,67 @@
+
+мне нужно перенести проект на удаленный хостинг. как это сделать максимально просто?
+структура:
+CookBook/
+├── Backend/
+    ├── __pycache__/
+    ├── venv/
+    ├── config.py
+    ├── .env
+    ├── init_database.py
+    ├── app.py (принимает запросы,передает контроллеру)
+    ├── requirements.txt
+    └── instance/
+    |   ├── cookbook.db
+    └── uploads/ (изображения)
+    |   ├── auvatars/ (аватарки)
+    |   └── recipes/ (оснвоное, шаги приготовления)
+    ├── models/ (свзяь с таблицами БД)
+    │   └── db.py
+    │   └── user.py
+    │   └── recipe.py
+    ├── controllers/ (обрабатывают запросы)
+    │   ├── auth_controller.py
+    │   └── recipe_controller.py
+    └── services/ (бизнес-логика)
+        ├── auth_service.py
+        ├── avatar_service.py
+        └── recipe_service.py
+        └── rating_service.py
+        └── favorit_service.py
+        └── comment_service.py
+├───Frontend/    
+    ├── build/       
+    ├── node_modules/  
+    ├── public/
+    │   ├── index.html
+    │   ├── manifest.json   
+    ├── src/
+    │   ├── components/
+    │   │   └── FavoritesPage.js 
+    │   │   └── LoginForm.js  
+    │   │   └── RecipeForm.js
+    │   │   └── RecipeEditForm.js
+    │   │   └── RecipeCard.js    
+    │   │   └── RecipeDetail.js    
+    │   │   └── RegisterForm.js   
+    │   │   └── SearchFilters.js   
+    │   │   └── UserProfile.js   
+    │   │   └── (и советующие им .css )
+    │   └── App.css  
+    │   └── App.js     
+    │   └── App.test.js    
+    │   └── index.js    
+    │   └── index.css  
+    │   └── reportWebVitals.js    
+    │   └── setupTests.js    
+    ├── package.json   
+    └── package-lock.json
+    └── .gitignore    
+
+талицы и их поля:
+users= id, username, email, password_hash, created_at, bio, avatar_url
+recipes = id,title,ingredients,instructions,cooking_time,category,difficulty, image_url,author, author_id, views, likes, rating, rating_count,comments_count, created_at,updated_at,servings
+favorites = id,user_id, recipe_id, created_at
+comments = id, recipe_id, user_id, tex,created_at
+ratings = id, recipe_id, user_id, rating, created_at   
+recipe_step_image = id, recipe_id, step_index,image_url, created_at
